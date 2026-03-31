@@ -1,0 +1,98 @@
+import java.util.*;
+
+public class Stack{
+    int arr[];
+    int top;
+    int capacity;
+    
+    Stack(int size)
+    {
+        arr=new int[size];
+        capacity=size;
+        top=-1;
+    }
+    
+    void push(int x)
+    {
+        if(top==capacity-1)
+        {
+            System.out.println("Stack overflow");
+            return;
+        }
+        arr[++top]=x;
+        System.out.println(x+" Pushed");
+    }
+    
+    void pop()
+    {
+        if(top==-1)
+        {
+            System.out.println("Stack is Underflow");
+            return;
+        }
+        System.out.println(arr[top--]+" popped");
+    }
+    
+    void peek()
+    {
+        if(top==-1)
+        {
+            System.out.println("Stack is Empty");
+            return;
+        }
+        System.out.println("Top element "+arr[top]);
+    }
+    
+    
+    void display() {
+        if (top == -1)
+        {
+            System.out.println("Stack is Empty");
+            return;
+        }
+        System.out.print("Stack: ");
+        for (int i = top; i >= 0; i--)
+        {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+public static void main(String []args)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter stack size:");
+        int n=sc.nextInt();
+        Stack s=new Stack(n);
+        boolean running=true;
+        while(running)
+        {
+            System.out.println("1.Push \n2.Pop \n3.Peek \n4.Display \n5.Exit\n");
+            int choice=sc.nextInt();
+            switch(choice)
+            {
+                case 1:
+                System.out.print("Enter element:");
+                int x=sc.nextInt();
+                s.push(x);
+                break;
+                
+                case 2:
+                s.pop();
+                break;
+                
+                case 3:
+                s.peek();
+                break;
+                
+                case 4:
+                s.display();
+                break;
+                
+                case 5:
+                running=false;
+            }
+        }
+        
+    }
+}
