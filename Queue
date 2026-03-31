@@ -1,0 +1,91 @@
+import java.util.*;
+
+public class Queue {
+    int arr[];
+    int front, rear, size, capacity;
+
+    Queue(int capacity) {
+        this.capacity = capacity;
+        arr = new int[capacity];
+        front = 0;
+        size = 0;
+        rear = -1;
+    }
+
+    void enqueue(int x) {
+        if (size == capacity) {
+            System.out.println("Queue Overflow");
+            return;
+        }
+        rear = (rear + 1) % capacity;
+        arr[rear] = x;
+        size++;
+        System.out.println(x + " added to queue");
+    }
+
+    void dequeue() {
+        if (size == 0) {
+            System.out.println("Queue Underflow");
+            return;
+        }
+        System.out.println(arr[front] + " removed from queue");
+        front = (front + 1) % capacity;
+        size--;
+    }
+
+    void peek() {
+        if (size == 0) {
+            System.out.println("Queue is Empty");
+            return;
+        }
+        System.out.println("Front element: " + arr[front]);
+    }
+
+    void display() {
+        if (size == 0) {
+            System.out.println("Queue is Empty");
+            return;
+        }
+        System.out.print("Queue: ");
+        for (int i = 0; i < size; i++) {
+            System.out.print(arr[(front + i) % capacity] + " ");
+        }
+        System.out.println();
+    }
+
+public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter queue size: ");
+        int capacity = sc.nextInt();
+
+        Queue q = new Queue(capacity);
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\n1.Enqueue  2.Dequeue  3.Peek  4.Display  5.Exit");
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter element: ");
+                    int x = sc.nextInt();
+                    q.enqueue(x);
+                    break;
+                case 2:
+                    q.dequeue();
+                    break;
+                case 3:
+                    q.peek();
+                    break;
+                case 4:
+                    q.display();
+                    break;
+                case 5:
+                    running = false;
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        }
+    }
+}
