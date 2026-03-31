@@ -1,0 +1,19 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+
+        int count1=0;
+        int count2=0;
+        for(char c : str.toCharArray()) {
+            if("aeiouAEIOU".indexOf(c) != -1)
+                count1++;
+            else
+                count2++;
+        }
+
+        System.out.println(count1+" "+count2);
+    }
+}
