@@ -1,0 +1,22 @@
+import java.util.*;
+public class Main{
+    public static boolean palindrome(int n)
+    {
+        int rev=0;
+        int temp=n;
+        while(n!=0)
+        {
+            int l=n%10;
+            rev=(rev*10)+l;
+            n=n/10;
+        }
+        return rev==temp;
+    }
+    public static void main(String []args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        boolean res=palindrome(n);
+        System.out.println(res);
+    }
+}
